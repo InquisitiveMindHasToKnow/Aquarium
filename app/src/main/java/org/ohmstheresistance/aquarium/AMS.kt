@@ -78,6 +78,27 @@ private fun feedTheFish(){
     println("Today is $day and the fish should eat $food on ${day+ "s" }.")
 
     println("Today is $day and the fish should eat $foodForV2 on ${day+ "s" }.")
+
+    //call it with 3 parameters in order
+    shouldChangeWater(day, 20, 50)
+
+    //calling the function with only required argument(s) which would use default values for temperature and dirty
+    shouldChangeWater(day)
+
+
+    //or setting one or any of the values by specifying thee name of the argument
+
+    shouldChangeWater(day, dirty = 80)
+
+    //best practice to put arguments without default values first and then the ones with default values after
+
+   // shouldChangeWater("Monday") //<<< compiler error
+
+    // shouldChangeWater(day = "Monday") // correct
+
+    if(shouldChangeWater(day)){
+        println("Change the water today.")
+    }
 }
 
 //function below selects a random day and returns a String.  >>>  : String <<<
@@ -151,4 +172,14 @@ private fun fishFoodV2(day: String) : String{
         "Sunday" -> "Plankton"
         else -> "fasting"
     }
+}
+
+//implement a way to change aquarium water based on certain criteria
+
+//there are 3 ways to call this function.
+
+private fun shouldChangeWater(day: String, temperature : Int = 22, dirty : Int = 20) : Boolean{
+
+    return true
+
 }
