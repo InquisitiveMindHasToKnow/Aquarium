@@ -22,6 +22,14 @@ fun main (args: Array<String>){
 
     println(getFortuneCookieForBirthday())
 
+    println(whatShouldIDoToday("happy"))
+
+    //filter returning true prints everything in decorations
+    println(decorations.filter { true })
+
+    //this filter returns every element that begins with the letter p
+    //'it' refers to each element in the list that's being filtered
+    println(decorations.filter { it[0] == 's' })
 
 }
 
@@ -174,6 +182,14 @@ private fun fishFoodV2(day: String) : String{
     }
 }
 
+//practice problem using default vals for variables
+fun whatShouldIDoToday(mood: String, weather: String = "sunny", temperature: Int = 24) : String {
+    return when {
+        mood == "happy" && weather == "Sunny" -> "go for a walk"
+        else -> "Stay home and read."
+    }
+}
+
 //implement a way to change aquarium water based on certain criteria
 
 //there are 3 ways to call this function.
@@ -183,3 +199,15 @@ private fun shouldChangeWater(day: String, temperature : Int = 22, dirty : Int =
     return true
 
 }
+
+//Default values are evaluated at CALL time with Kotlin
+//Any in Kotlin can hold any type of object.
+
+//While almost everything in Kotlin is an expression with a value, there are a few exceptions.
+//There is no sensitive value for while loops and for loops so they don't have any value.
+//Eg: if you try to assign a variable to a for loop, you'll get an error saying it's a statement.
+
+
+                        //Filters are another control flow construct you can use from the standard
+
+val decorations = listOf("Rocks", "Pebbles", "Plastic Plant", "Pagoda", "Shells", "Flowers", "Sand", "Seaweed")
