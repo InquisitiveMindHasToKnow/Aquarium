@@ -31,6 +31,11 @@ fun main (args: Array<String>){
     //'it' refers to each element in the list that's being filtered
     println(decorations.filter { it[0] == 's' })
 
+
+    println(swim)
+
+    println(filterTheWater(dirtyWater))
+
 }
 
 private fun dayOfWeek(){
@@ -211,3 +216,21 @@ private fun shouldChangeWater(day: String, temperature : Int = 22, dirty : Int =
                         //Filters are another control flow construct you can use from the standard
 
 val decorations = listOf("Rocks", "Pebbles", "Plastic Plant", "Pagoda", "Shells", "Flowers", "Sand", "Seaweed")
+
+//                      Lambdas
+
+// An expression that makes a function
+//Lambdas are always surrounded by curly brackets in Kotlin and can be called like funtions
+
+val swim = { println("Fast")}()
+
+//Lambda arguments go on the left and the body of the lambda goes on the right of the arrow ->
+
+val dirtyWater = 20
+val filterTheWater = {dirtyWater : Int -> dirtyWater / 2}
+
+
+//Kotlin's syntax for function types. This syntax can be used to cleaning declare a variable that will hold a function
+
+//we don't have to specify thee type of the lambda argument anymore, as it's calculated by type inference
+val waterFilter: (Int) -> Int = { dirtyWater -> dirtyWater / 2}
