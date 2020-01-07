@@ -36,6 +36,8 @@ fun main (args: Array<String>){
 
     println(filterTheWater(dirtyWater))
 
+    eagerFilterExample()
+
 }
 
 private fun dayOfWeek(){
@@ -234,3 +236,30 @@ val filterTheWater = {dirtyWater : Int -> dirtyWater / 2}
 
 //we don't have to specify thee type of the lambda argument anymore, as it's calculated by type inference
 val waterFilter: (Int) -> Int = { dirtyWater -> dirtyWater / 2}
+
+
+//By default, filtering a list is "eager". Meaning, it creates a new list of the elements that pass through the filter everytime you call filter
+//but filtering can be done lazily as well.(more on that later)
+private fun eagerFilterExample(){
+    val decorations = listOf("Rocks", "Pebbles", "Plastic Plant", "Pagoda", "Shells", "Flowers", "Sand", "Seaweed")
+
+
+    //for example: eager below will hold a new list containing all the elements beginninng with the letter s
+    val eagerFilter = decorations.filter { it[0] == 's' }
+    println(eagerFilter)
+
+
+    //To do filtering lazily, you can use sequencing. When you return as a sequence, a new
+    // list won't be created, but rather it would hold a sequence of all the
+    //list elements and knowledge of the filter to apple to each element.
+
+    //Whenever you access elements in a sequence, the filter is applied.
+    val lazyFilter = listOf("Rocks", "Pebbles", "Plastic Plant", "Pagoda", "Shells", "Flowers", "Sand", "Seaweed")
+
+    println(lazyFilter)
+
+    //If you want to return the squence to a list, just use .toList()
+    println(lazyFilter.toList())
+
+    //after which the filter will be applied and all elements beginning with s will be put into a new list
+}
