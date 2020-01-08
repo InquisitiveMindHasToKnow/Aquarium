@@ -114,6 +114,8 @@ private fun feedTheFish(){
     if(shouldChangeWater(day)){
         println("Change the water today.")
     }
+
+    dirtyProcessor()
 }
 
 //function below selects a random day and returns a String.  >>>  : String <<<
@@ -228,7 +230,7 @@ val swim = { println("Fast")}()
 
 //Lambda arguments go on the left and the body of the lambda goes on the right of the arrow ->
 
-val dirtyWater = 20
+var dirtyWater = 20
 val filterTheWater = {dirtyWater : Int -> dirtyWater / 2}
 
 
@@ -258,8 +260,35 @@ private fun eagerFilterExample(){
 
     println(lazyFilter)
 
-    //If you want to return the squence to a list, just use .toList()
+    //If you want to return the sequence to a list, just use .toList()
     println(lazyFilter.toList())
 
     //after which the filter will be applied and all elements beginning with s will be put into a new list
+}
+
+private fun updateDirty (dirty : Int, operation : (Int) -> Int) : Int{
+
+    return operation(dirty)
+}
+
+private fun feedFish( dirtyWater: Int) = dirtyWater + 10
+
+//AMS system's "dirty processor that'll be called from feedthefish
+
+//A higher order function is any function that takes a function as an argument
+private fun dirtyProcessor(){
+
+    dirtyWater = updateDirty(dirtyWater, waterFilter)
+
+    //because feed fish is a named function and not a lambda, it's passed using ::
+    //this way kotlin knows you're not trying to call feedFish, but will let you pass a reference
+    dirtyWater = updateDirty(dirtyWater, :: feedFish)
+
+
+    //when you combine higher order functions with lambdas, kotlin uses the last parameter call syntax
+
+//the lambda is an argument to update dirty but since its passed as the last parameter, it does not have to be in the function parenthesis
+    dirtyWater = updateDirty(dirtyWater){
+        dirtyWater -> dirtyWater + 80
+    }
 }
