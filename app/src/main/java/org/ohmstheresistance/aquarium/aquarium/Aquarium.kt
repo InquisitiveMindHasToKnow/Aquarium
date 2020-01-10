@@ -1,4 +1,4 @@
-package org.ohmstheresistance.aquarium
+package org.ohmstheresistance.aquarium.aquarium
 
 //Classes
 
