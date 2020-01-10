@@ -1,4 +1,4 @@
-package org.ohmstheresistance.aquarium
+package org.ohmstheresistance.aquarium.aquarium
 
 fun main (args: Array<String>) {
 
@@ -23,11 +23,16 @@ private fun buildAquarium(){
    println("Volume: ${myNewAquarium.volumeOfWater()} liters")
 
 
-    val smallAquarium = Aquarium(length = 40, height = 20, width = 10 )
+    val smallAquarium = Aquarium(
+        length = 40,
+        height = 20,
+        width = 10
+    )
     println("Small Aquarium Volume: ${smallAquarium.volumeOfWater()} liters")
 
 
-    val builtAquarium = Aquarium(numberOfFish = 9)
+    val builtAquarium =
+        Aquarium(numberOfFish = 9)
 
     println("Built Aquarium Volume: ${builtAquarium.volumeOfWater()} liters " +
             "Length: ${builtAquarium.length}"  +
