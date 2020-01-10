@@ -27,7 +27,6 @@ private fun buildAquarium(){
     println("Small Aquarium Volume: ${smallAquarium.volumeOfWater()} liters")
 
 
-    //note that this aquarium
     val builtAquarium = Aquarium(numberOfFish = 9)
 
     println("Built Aquarium Volume: ${builtAquarium.volumeOfWater()} liters " +

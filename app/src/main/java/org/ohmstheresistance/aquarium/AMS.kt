@@ -38,6 +38,11 @@ fun main (args: Array<String>){
 
     eagerFilterExample()
 
+
+    useOfIs()
+
+    funWithRanges()
+
 }
 
 private fun dayOfWeek(){
@@ -300,3 +305,43 @@ private fun dirtyProcessor(){
 //random1 has a value assigned at compile time, and the value never changes when the variable is accessed.
 //random2 has a lambda assigned at compile time, and the lambda is executed every time the variable is referenced, returning a different value.
 
+
+private fun useOfIs() {
+    //the keyword is is used to see if a variable is an integer, float, boolean or double
+//so the line below is checking to see if true is a boolean
+    if (false is Boolean) {
+        println("false is boolean")
+    }
+
+}
+
+private fun funWithRanges(){
+
+    //Define a starting and ending value and allows you to do calculations in between them
+
+    val rangeFromOneToTen = 1..10 //automatically created a range incrementing from 1 to 10
+
+    val alpha = "A".."Z"
+
+    println("R in Alpha? : ${"R" in alpha}") //the keyword in checks to see if a certain item falls in a range or not
+
+    val rangeFromTenToOne = 10.downTo(1) //creates a range from 10 to 1
+
+    val rangeFromTwoToTwenty = 2.rangeTo(20) //creates a range from 2 to 20
+
+    val rangeThree =
+        rangeFromOneToTen.step(3) //goes through the rangeFromOneToTen range and adds 3 to every item so it goes from 1 > 4 > 7 > 10
+
+
+    for (x in rangeThree) println("rangeThree: $x ")//Cycling through a range and printing information out
+
+    println("\n")
+
+    for (x in rangeFromTwoToTwenty)
+        print("rangeFromTwoToTwenty: $x, ")
+
+    println("\n")
+    for (x in rangeFromTenToOne.reversed())
+        println("Reverse rangeFromOneToTen: $x")//reversing a range. 10 to 1 now 1 to 10
+
+}
