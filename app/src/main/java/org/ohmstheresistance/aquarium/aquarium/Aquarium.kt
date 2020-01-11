@@ -13,9 +13,9 @@ open class Aquarium(var length: Int = 100, var height: Int = 40, var width: Int 
 
 
 
-//     fun volumeOfWater(): Int {
-//        return length * width * height / 1000
-//    }
+     fun volumeOfWater(): Int {
+        return length * width * height / 1000
+    }
 
 
    open var volume : Int
@@ -65,3 +65,4 @@ class TowerTank(): Aquarium(){
         height = (value * 1000)/(width * length)
     }
 }
+

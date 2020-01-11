@@ -3,6 +3,7 @@ package org.ohmstheresistance.aquarium.aquarium
 fun main (args: Array<String>) {
 
     buildAquarium()
+    makeFish()
 
 }
 
@@ -38,5 +39,22 @@ private fun buildAquarium(){
             "Length: ${builtAquarium.length}"  +
             "Width: ${builtAquarium.width}" +
             "Height: ${builtAquarium.height}")
+}
+
+fun makeFish(){
+
+    val shark = Shark()
+    val plecostomus = Plecostomus()
+
+    println("Shark Color: ${shark.color} \nPlecostomus Color: ${plecostomus.color}")
+
+    shark.eat()
+    plecostomus.eat()
+}
+
+//only fish that implement FishAction will pass into feedFish.
+fun feedFish( fish : FishAction){
+
+    fish.eat()
 }
 
