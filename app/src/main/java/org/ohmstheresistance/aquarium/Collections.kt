@@ -1,5 +1,8 @@
 package org.ohmstheresistance.aquarium
 
+import android.annotation.SuppressLint
+
+@SuppressLint("NewApi")
 fun main(args: Array<String>){
 
     //Immutable collections are particularly useful in threaded environments where it could be troublesome if multiple threads
