@@ -46,7 +46,10 @@ class Aquarium<out T: WaterSupply>(val waterSupply: T){
         println("Addding water from $waterSupply")
     }
 
+
+
 }
+
 
 fun genericExample(){
     val aquarium = Aquarium<TapWater>(TapWater())
@@ -111,3 +114,48 @@ class TapWaterCleaner: Cleaner<TapWater>{
         waterSupply.addChemicalCleaners()
     }
 }
+
+//Generic Functions
+
+//you can make a function generic by adding <> after the fun keyword
+
+//we can use generic functions for methods, too. Even in classes that have their own generic type.
+fun <T: WaterSupply>isWaterClean(aquarium: Aquarium<T>){
+
+    println("Aquarium water is cleann: ${aquarium.waterSupply.needsProcessed}")
+
+}
+
+//In order to use R in this function, we have to tell Kotlin that it's reified(real).
+//To make a generic type reified, you need to use the inline keyword before fun and reified before the type.
+
+//We don't really care what kind of aquarium hasWaterSupplyOfType is called on and we show that by using <*> as the generic (star projections)
+
+inline fun <reified R: WaterSupply> Aquarium<*>.hasWaterSupplyOfType() = waterSupply is R
+
+//we can use reified types for regular and extension functions and not just members.
+
+inline fun <reified  T: WaterSupply> WaterSupply.isOfType() = this is T
+
+fun genericExampleThree(){
+
+    val aquarium = Aquarium(TapWater())
+    isWaterClean(aquarium)
+
+    aquarium.hasWaterSupplyOfType<TapWater>() //true
+
+    aquarium.waterSupply.isOfType<LakeWater>() //false
+
+
+}
+
+
+//All generic types are only used at compile time in kotlin. However, at runtime, all generic types are erased.
+
+
+
+
+
+
+
+
